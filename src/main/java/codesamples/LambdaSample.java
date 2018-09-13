@@ -2,6 +2,7 @@ package codesamples;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Supplier;
 
 import com.superior.fw.superior.entity.Chapter;
 
@@ -10,7 +11,7 @@ import reactor.core.publisher.Flux;
 public class LambdaSample {
 
 	public static void main(String[] args) {
-	LambdaSample lm = new LambdaSample();
+		LambdaSample lm = new LambdaSample();
 		// lm.doLamda();
 		lm.doFlux();
 		lm.doSupplier();
@@ -37,20 +38,15 @@ public class LambdaSample {
 
 	public void doFlux() {
 		System.out.println("start");
-		Flux.just(new Chapter("quick"), new Chapter("start"), new Chapter("java"))
-				.subscribe(System.out::println);
+		Flux.just(new Chapter("quick"), new Chapter("start"), new Chapter("java")).subscribe(System.out::println);
 		System.out.println("end");
-		
+
 	}
-	
+
 	public void doSupplier() {
 		// tag::7[]
-		Flux.just(
-			(Supplier<String>) () -> "alpha",
-			(Supplier<String>) () -> "bravo",
-			(Supplier<String>) () -> "charlie")
-			.subscribe(supplier ->
-				System.out.println(supplier.get()));
+		Flux.just((Supplier<String>) () -> "alphaPPP", (Supplier<String>) () -> "bravo", (Supplier<String>) () -> "charlie")
+				.subscribe(supplier -> System.out.println(supplier.get()));
 		// end::7[]
 	}
 
