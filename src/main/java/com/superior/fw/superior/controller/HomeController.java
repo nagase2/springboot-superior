@@ -25,4 +25,6 @@ public class HomeController {
 		System.out.println("this is greeting...");
 		return "fixed";
 	}
+
+
 }
