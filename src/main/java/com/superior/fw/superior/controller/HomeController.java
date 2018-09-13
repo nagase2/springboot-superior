@@ -16,7 +16,7 @@ public class HomeController {
 	public String greeting(@RequestParam(required = false, defaultValue = "", value = "/xx") String name) {
 		log.info("----------------------");
 		System.out.println("this is greeting...");
-		return name.equals("") ? "Hey!" : "Hey, " + name + "!";
+		return name.equals("") ? "Hey!!!!!" : "Hey, " + name + "!";
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/xxx")
@@ -25,5 +25,4 @@ public class HomeController {
 		System.out.println("this is greeting...");
 		return "fixed";
 	}
-
 }
