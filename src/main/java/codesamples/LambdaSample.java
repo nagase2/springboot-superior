@@ -10,12 +10,12 @@ import reactor.core.publisher.Flux;
 
 public class LambdaSample {
 
-	public static void main(String[] args) {
-		LambdaSample lm = new LambdaSample();
-		// lm.doLamda();
-		lm.doFlux();
-		lm.doSupplier();
-	}
+//	public static void main(String[] args) {
+//		LambdaSample lm = new LambdaSample();
+//		// lm.doLamda();
+//		lm.doFlux();
+//		lm.doSupplier();
+//	}
 
 	/**
 	 * 

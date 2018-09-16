@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
@@ -17,6 +18,7 @@ import com.superior.fw.superior.entity.Image;
 
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 @Slf4j
@@ -47,14 +49,20 @@ public class ImageService {
 		};
 	}
 	
-	public Flux<Image> findAllImages(){
+	public Flux<Image> findAllImages() {
 		try {
-			return Flux.fromIterable(
-					Files.newDirectoryStream(Paths.get(UPLOAD_ROOT))).map(path->new Image(path.hashCode(),path.getFileName().toString()));
-		}catch(IOException e) {
+			return Flux.fromIterable(Files.newDirectoryStream(Paths.get(UPLOAD_ROOT)))
+					.map(path -> new Image(path.hashCode(), path.getFileName().toString()));
+		} catch (IOException e) {
 			return Flux.empty();
-					
+
 		}
+	}
+
+	public Mono<Resource> findOneImage(String filename) {
+		return Mono.fromSupplier(() -> 
+		  resourceLoader.getResource(
+				"file:" + UPLOAD_ROOT + "/" + filename));		
 	}
 	
 }
