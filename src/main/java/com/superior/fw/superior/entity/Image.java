@@ -11,11 +11,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Image {
 
-	private String id;
+	private int id;
 	private String name;
 
-	public Image(String id, String name) {
-		this.id = id;
+	public Image(int i, String name) {
+		this.id = i;
 		this.name = name;
 	}
 }
